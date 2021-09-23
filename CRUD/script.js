@@ -39,7 +39,7 @@ function displaytasks(){
         let span = document.createElement('SPAN');
         span.textContent = element;
         span.setAttribute("id", `task${index}`);
-        span.setAttribute("onclick", `editTask(${index})`)
+        span.setAttribute("onclick", `editTask(${index})`) // later
         li.appendChild(span);
         let button = document.createElement('BUTTON');
         button.innerHTML = 'X'
