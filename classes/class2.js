@@ -8,3 +8,4 @@ class Animal {
     console.log(`Animal is running with ${speed}`);
   };
 }
+console.info(Animal);
