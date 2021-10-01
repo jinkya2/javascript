@@ -1,3 +1,7 @@
+/**
+ * CLASSES
+ */
+
 class ClassName1 {
   // class fields, set on individual objects, not ClassName1.prototype
   field1 = "fieldvalue";
@@ -25,11 +29,11 @@ class ClassName1 {
    * javascript have dynamic this, depending on context of call, thus
    * the following method will not work for below code sample-
    * var object = new ClassName1("value");
-   * object.method1;    // ClassName1{...}
+   * object.method2;    // ClassName1{...}
    * setTimeout(object.method1, 1000); // Window{}
    *
    * to solve it, use ()=>
-   * method1 = ()={alert(this)}
+   * method3 = ()={console.log(this)}
    */
   method1() {
     console.log(this.filed1);
