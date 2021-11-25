@@ -156,10 +156,261 @@ multiply();
 
 ### Explore Block scoped variables with code
 ```javascript
-
+var a = 20;
+{
+  let exe = 30;
+  console.log(exe); // Expected output: 30
+}
+console.log(a) // Expected output: 20
+console.log(exe); // Uncaught ReferenceError: exe is not defined
 ```
 ### Challenge: Defined let/const variable
+- Immutable array with let./const
+
 ### Solution: Defined let/const variable
+```javascript
+const warriors = [
+    {name: 'A', type: 'Ninja', agility: 19},
+    {name: 'B', type: 'Samurai', agility: 28},
+    {name: 'C', type: 'Viking', agility: 23}
+]
+
+function warriorAgility(){
+    warriors.map((warrior)=>{
+        if(warrior['agility']>20){
+            console.log(`${warrior.name} is eligible.`);
+        }
+    })
+}
+
+warriorAgility();
+```
+## Conclusion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Functions
+
+## Introduction
+- Familiar wiyh HTML and basic JavaaScript.
+
+## 1. Getting started
+
+### What are functions?
+- Series of statements grouped together in block. 
+- function name is optional function(){}
+```javascript
+function functionName(param1, pram2, ...paramN){
+    // statements
+    return resultValue;    // default undefined
+}
+
+functionName(arg1, arg2, ...arg3);    // function invocation
+```
+
+### Declaring functions
+- **Function Declaration** / Traditional Definition
+``` javascript
+function Name(param){
+    // statements
+    return value;
+}
+```
+
+- **Anonymous function** / Definition Expression 
+- - more flexible
+- - can invoked immediately function(){}()
+- - useful when needed once
+```javascript
+let funName = function(){}
+funName();
+```
+```javascript
+var plus = function(a,b){
+    return console.log(a+b);
+}();    // NaN
+```
+### Invoking function traditionally
+- Four ways of invocation
+- - Functions
+- - Methods
+- - Constructors
+```javascript
+const sum = new Function('a', 'b', 'return a+b'); 
+sum(1, 2);
+```
+```javascript
+function Person(name, age){
+    this.name = name;
+    this.age = age;
+    this.greet = function(){console.log(`Hi ${this.name}`)};
+}
+const person1 = new Person('Rakesh', 25);
+```
+- - Call and apply methods
+
+- Function also gets arguments and this but arguments is no longer best practice and spread operator are preffered ove them.
+```javascript
+function plus(a, b){
+    return (
+        console.log(a+b),
+        console.log(this),
+        console.log(arguments)
+    )
+}
+
+plus(2, 3)
+```
+
+## 2. Function Invocation
+
+### Using functions as Objects
+- Method is a function as property in an object.
+```javascript
+let info={
+    full_name: "Ajinkya",
+    title: "Staff Author",
+    links: [
+        {blog: "https://abc.com"},
+        {twitter: "https://xyz.com"}
+    ]
+}
+
+let calc={
+    staus: "Awesome",
+    plus: function(a,b){
+        return (
+            console.log(this),
+            console.log(a+b),
+            console.log(arguments),
+            console.log(this.status)
+        )
+    }
+}
+
+calc.plus(2, 2)
+```
+- The `this` argument points to the object
+- Invoke the function using dot notation
+- THe binding of `this` happens at invocation time
+
+### Invoking Instances through the constructor
+```javascript
+let Dog = function(){
+    let name, breed;
+}
+
+firstDog = new Dog;
+firstDog.name = "Rober";
+firstDog.breed = "DobberMan";
+```
+
+- Constructor name should be capitalized as per conventions.
+- new keyword creates a new instance of the object.
+- the this atguments points to the each instance of the object.
+- But instead of creating and assigning these values again and again, simply create a constructor function like
+```javascript
+function Dog(name, breed){
+    this.name=name;
+    this.breed=breed;
+}
+let dog1 = new Dog('A', "Breed1");
+let dog2 = new Dog('B', "Breed2");
+```
+### Expanding functionality through prototype
+- JavaScript is Prototypal Inheritance Language.
+- Every object can be based on another
+- Prototype object gives you access
+- All object inherits properties
+```javascript
+let Dog = function(){
+    let name, breed;
+}
+dog1 = new Dog;
+Dog.prototype.speak = function(word){
+    console.log(word);
+}
+dog1.speak("Hello");
+```
+
+### Understanding call and apply invocation
+- Indirect Invocation
+- Define the value of `this` argument.
+- Control: `this` and `arguments`
+- `call` passes a value and apply an `array`
+```javascript
+let speak = function(text){
+    console.log(text);
+    console.log(this);
+}
+
+var saySomething={
+    normal: "meow",
+    love: "purr"
+}
+
+speak.call(saySomething, saySomething.normal);
+```
+```javascript
+let speak = function(text){
+    console.log(text);
+    console.log(this);
+}
+
+var saySomething={
+    normal: "meow",
+    love: "purr"
+}
+
+speak.apply(saySomething, ["meeyaw", "oii"]);
+```
+
+### Using the arguments parameter
+- List of elements passed
+- An array like object (Convert with Array.from(X))
+- Numerical index arguments[x]
+- Length arguments.length
+- Loop through arguments possible
+- Can't use all array methods as arguments are not native arrays. 
+
+
+
+### Returning values
+
+### Challenge: Social Media Navigator
+
+### Solution: Social Media Navigator
+
+## 3. Using Functions
+
+### Using anonymous closure
+
+### Understanding hoisting and variable scope
+
+### Creating and namespacing modules
+
+### Passing arguments and setting module defaults
+
+### Chaining module method calls 
 
 ## Conclusion
 
@@ -168,9 +419,24 @@ multiply();
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # INDEX
 
-## Scope [00 H 41 M]
+<del>## Scope [00 H 41 M]</del>
 ## Functions [01 H 25 M]
 ## Events [01 H 11 M]
 ## Functional Programming [01 H 00 M]
@@ -198,3 +464,20 @@ multiply();
 ## Security Essentials [00 H 45 M]
 
 ## Ethical Hacking [00 H 32 M]
+
+
+# OTher
+
+## Study less, study smart
+- Get all material, check your watch, start working, the time you feel i cant go onward, note the time (typically its 25-30 minutes).
+- Jinet with 1.0 CGPA, decided to study for six hours a night, each day without break. Her second quater gradepoint 0.0 CGPA. Studying more is not neccessarily useful.
+- Thigs that are reinforced we tend to do more of. Things that are punished or ignored, we tend to do less of.
+- Are you feeling good or focused?
+- Moment you start to slide, youre shoveling against tide. TAKE A SHORT BREAK. 
+- Study half hour, take 5 min break, do fun, talk, music, anything, treat for your half hour study.
+- True study or library at place of residence. A quit place. Whats the primary function of bedroom? Sleep And secondary? Sex ;) Primary function of dining table? eating.
+- If you have limited space, make settings, install a study lamp, make sitting arrangements, SWITCH between spaces study room and bed room!
+- If it doesnt change your behaviour, its just in your head. To be  a true learning experience, you have to behave differently.
+- The more active you are in your learning, the more effective!
+- When your reading over and over, the term R-O-T-E, repetittion, maybe work, but not for everyone.
+- [19:30]

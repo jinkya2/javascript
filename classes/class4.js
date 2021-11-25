@@ -5,4 +5,4 @@
  * JavaScript Two types of object fields(properties and methods)
  */
 
-class 
+class A{}
