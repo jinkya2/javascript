@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Modules in the browser!</title>
+</head>
+<body>
+
+<script type="module" src="./script1.js"></script>
+<script type="module">
+    import {admin} from "./script2.js";
+    console.log(import.meta.url);
+    console.log(window.value1);
+    console.log(admin.name);
+</script>
+
+</body>
+</html>
